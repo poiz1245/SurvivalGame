@@ -11,18 +11,29 @@ public class TopView : MonoBehaviour
     [SerializeField] float moveSpeed;
 
     Rigidbody rigid;
+    Animator anim;
 
     float horizontalInput;
     float verticalInput;
 
     private void Start()
     {
-        rigid = GetComponent<Rigidbody>();  
+        rigid = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
     void Update()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+
+        if (horizontalInput != 0f || verticalInput != 0f)
+        {
+            anim.SetBool("isRun", true);
+        }
+        else
+        {
+            anim.SetBool("isRun", false);
+        }
     }
 
     private void FixedUpdate()

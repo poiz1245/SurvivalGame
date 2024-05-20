@@ -33,8 +33,7 @@ public class GroundReposition : MonoBehaviour
         }
         else if (Mathf.Abs(diffX - diffZ) <= 0.1f)
         {
-            transform.Translate(Vector3.forward * playerYDir * groundMoveDis);
-            transform.Translate(Vector3.right * playerXDir * groundMoveDis);
+            transform.Translate(playerYDir * groundMoveDis, 0, playerXDir * groundMoveDis);
         }
     }
 }
