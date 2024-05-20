@@ -12,7 +12,7 @@ public class TopView : MonoBehaviour
 
     Rigidbody rigid;
     float horizontalInput;
-    float verticaInput;
+    float verticalInput;
 
     private void Start()
     {
@@ -21,12 +21,12 @@ public class TopView : MonoBehaviour
     void Update()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticaInput = Input.GetAxisRaw("Vertical");
+        verticalInput = Input.GetAxisRaw("Vertical");
     }
 
     private void FixedUpdate()
     {
-        Vector3 moveDir = new Vector3(horizontalInput, rigid.velocity.y, verticaInput);
+        Vector3 moveDir = new Vector3(horizontalInput, rigid.velocity.y, verticalInput);
 
         Vector3 targetVelocity = moveDir * moveSpeed;
         Vector3 velocityChange = (targetVelocity - rigid.velocity);
