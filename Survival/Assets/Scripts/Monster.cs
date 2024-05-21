@@ -5,7 +5,6 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
-    [SerializeField] float rotateSpeed;
 
     Rigidbody rigid;
     void Start()
