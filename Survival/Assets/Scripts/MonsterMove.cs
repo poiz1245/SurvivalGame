@@ -9,12 +9,10 @@ public class MonsterMove : MonoBehaviour
 
     GameObject playerPos;
     Rigidbody rigid;
-    Animator anim;
     // Start is called before the first frame update
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
-        anim = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -22,13 +20,6 @@ public class MonsterMove : MonoBehaviour
         playerPos = GameObject.Find("Player");
     }
 
-    private void Update()
-    {
-        /*if ()
-        {
-            anim.SetBool("isAttack", true);
-        }*/
-    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -39,7 +30,6 @@ public class MonsterMove : MonoBehaviour
 
         Move(velocityChange);
         Rotate(moveDir);
-        
     }
 
     public void Rotate(Vector3 moveDir)
