@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class MonsterSpawner : MonoBehaviour
 {
     [SerializeField] int index;
     [SerializeField] float spawnDelay;
@@ -11,25 +11,20 @@ public class Spawner : MonoBehaviour
     [Header("Monster Pool")]
     [SerializeField] Transform[] spawnPoints;
 
-    int rnd;
-
     void Start()
     {
         StartCoroutine(MonsterSpawn(0, spawnDelay));
     }
 
-    private void Update()
-    {
-        rnd = Random.Range(0, spawnPoints.Length);
-    }
     IEnumerator MonsterSpawn(int index, float spawnDelay)
     {
         while (true)
         {
             yield return new WaitForSeconds(spawnDelay);
-
+            int rnd = Random.Range(0, spawnPoints.Length);
             GameObject monster = GameManager.Instance.monsterPool.GetMonster(index);
             monster.transform.position = spawnPoints[rnd].position;
+            print("º“»Ø");
         }
     }
 }

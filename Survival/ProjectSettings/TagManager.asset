@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Area
+  - enemyBug
+  - Monster
   layers:
   - Default
   - TransparentFX

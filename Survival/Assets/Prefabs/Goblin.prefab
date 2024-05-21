@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 3802993876732482063}
   m_Layer: 0
   m_Name: Goblin
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -387,8 +387,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457071bf6fe6db74d8779f3acddf2f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.1
-  Hp: 100
+  moveSpeed: 0.8
+  hp: 100
 --- !u!1 &2296440217050444418
 GameObject:
   m_ObjectHideFlags: 0

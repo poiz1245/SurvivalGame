@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MonsterPool : MonoBehaviour
 {
-    //public static MonsterPool Instance;
-
     [SerializeField] GameObject[] monsterPrefabs;
 
     List<GameObject>[] monsterPool;
