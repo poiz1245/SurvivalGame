@@ -30,12 +30,6 @@ public class Spawner : MonoBehaviour
 
             GameObject monster = GameManager.Instance.monsterPool.GetMonster(index);
             monster.transform.position = spawnPoints[rnd].position;
-
-            /*for (int i = 0; i < spawnPoints.Length; i++)
-            {
-                GameObject monster = GameManager.Instance.monsterPool.GetMonster(index);
-                monster.transform.position = spawnPoints[i].position;
-            }*/
         }
     }
 }
