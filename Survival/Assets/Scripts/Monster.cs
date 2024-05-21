@@ -47,7 +47,6 @@ public class Monster : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-
     private void AnimationSetting()
     {
         if (hp <= 0)
@@ -59,15 +58,17 @@ public class Monster : MonoBehaviour
             anim.SetBool("isDead", false);
         }
     }
-
     public void Rotate(Vector3 moveDir)
     {
         Quaternion deltaRotation = Quaternion.LookRotation(moveDir);
         rigid.MoveRotation(deltaRotation);
     }
-
     public void Move(Vector3 velocityChange)
     {
         rigid.AddForce(velocityChange, ForceMode.VelocityChange);
+    }
+    public void GetDamage(float damage)
+    {
+        hp -= damage;
     }
 }
