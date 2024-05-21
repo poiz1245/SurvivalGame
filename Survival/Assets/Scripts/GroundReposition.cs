@@ -7,6 +7,11 @@ public class GroundReposition : MonoBehaviour
     [SerializeField] Transform playerPosition;
     [SerializeField] float groundMoveDis;
 
+    private void Update()
+    {
+        print("Horizontal" + Input.GetAxisRaw("Horizontal"));
+        print("Vertical" + Input.GetAxisRaw("Vertical"));
+    }
     private void OnTriggerExit(Collider other)
     {
         if (!other.gameObject.CompareTag("Area"))
