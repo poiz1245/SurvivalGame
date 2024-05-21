@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 7534260115520820762}
   - component: {fileID: 5625752391992048150}
   - component: {fileID: 4592785742248531243}
-  - component: {fileID: 5964961276558200017}
+  - component: {fileID: 3802993876732482063}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -375,7 +375,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &5964961276558200017
+--- !u!114 &3802993876732482063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -387,8 +387,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457071bf6fe6db74d8779f3acddf2f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
-  rotateSpeed: 5
+  moveSpeed: 0.1
+  Hp: 100
 --- !u!1 &2296440217050444418
 GameObject:
   m_ObjectHideFlags: 0
