@@ -5,9 +5,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    //오브젝트 풀에서 몬스터 받아서 코루틴으로 몬스터 스폰
     [SerializeField] int index;
-    [SerializeField] Transform[] spawnSpot;
+    [SerializeField] Transform[] spawnPoints;
 
     void Start()
     {
@@ -18,11 +17,11 @@ public class Spawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(spawnDelay);
-            GameObject monster = MonsterPool.GetMonster(index);
 
-            for (int i = 0; i < spawnSpot.Length; i++)
+            for (int i = 0; i < spawnPoints.Length; i++)
             {
-                monster.transform.position = spawnSpot[i].position;
+                GameObject monster = MonsterPool.GetMonster(index);
+                monster.transform.position = spawnPoints[i].position;
             }
         }
     }
