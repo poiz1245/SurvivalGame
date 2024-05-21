@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
+    public float damage { get; private set; }
 
     [SerializeField] float moveSpeed;
 
@@ -20,6 +21,8 @@ public class Player : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+
+        damage = 50f;
     }
     void Update()
     {
