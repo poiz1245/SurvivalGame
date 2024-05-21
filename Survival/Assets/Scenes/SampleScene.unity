@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
+  spawnDelay: 0.3
   spawnPoints:
   - {fileID: 131696678}
   - {fileID: 915161867}
@@ -1103,8 +1104,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1583237112}
+  - component: {fileID: 1583237113}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1125,6 +1127,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1583237113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583237111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102d442f7f21ea841a3359832250aae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterPool: {fileID: 204987157}
+  player: {fileID: 353950724659340146}
 --- !u!1 &1622795078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,6 +1357,18 @@ MonoBehaviour:
     Ordinal: 15
     Priority: 0
     IconType: 260000
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 0
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 1583237111}
+    Ordinal: 16
+    Priority: 0
+    IconType: 103000
     IconTexture: {fileID: 0}
     IsIconRecursive: 0
     BackgroundType: 0
@@ -2070,6 +2098,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &353950724659340146 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1766549523832774378, guid: 3a22e40f6136b544ba48b5861ceecb86, type: 3}
+  m_PrefabInstance: {fileID: 2393896876107442994}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5282377069350112309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6e33e993d2ec9b43818bf478a71093a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2235091017473311173
 GameObject:
   m_ObjectHideFlags: 0
@@ -2245,10 +2284,10 @@ SceneRoots:
   - {fileID: 2143217128}
   - {fileID: 1446366806}
   - {fileID: 853562855}
+  - {fileID: 1583237112}
   - {fileID: 2095642}
   - {fileID: 204987158}
   - {fileID: 599110288}
   - {fileID: 6082886045419737669}
   - {fileID: 727594734}
   - {fileID: 2393896876107442994}
-  - {fileID: 1583237112}
