@@ -20,7 +20,7 @@ public class Spawner : MonoBehaviour
 
             for (int i = 0; i < spawnPoints.Length; i++)
             {
-                GameObject monster = MonsterPool.GetMonster(index);
+                GameObject monster = GameManager.Instance.monsterPool.GetMonster(index);
                 monster.transform.position = spawnPoints[i].position;
             }
         }

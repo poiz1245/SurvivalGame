@@ -5,7 +5,7 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class PlayerMove : MonoBehaviour
+public class Player : MonoBehaviour
 {
 
     [SerializeField] float moveSpeed;
@@ -25,17 +25,8 @@ public class PlayerMove : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-
-        if (horizontalInput != 0f || verticalInput != 0f)
-        {
-            anim.SetBool("isRun", true);
-        }
-        else
-        {
-            anim.SetBool("isRun", false);
-        }
+        AnimSet();
     }
-
     private void FixedUpdate()
     {
         Vector3 moveDir = new Vector3(horizontalInput, rigid.velocity.y, verticalInput);
@@ -46,7 +37,17 @@ public class PlayerMove : MonoBehaviour
         Movement(velocityChange);
         Rotation(moveDir);
     }
-
+    private void AnimSet()
+    {
+        if (horizontalInput != 0f || verticalInput != 0f)
+        {
+            anim.SetBool("isRun", true);
+        }
+        else
+        {
+            anim.SetBool("isRun", false);
+        }
+    }
     private void Rotation(Vector3 moveDir)
     {
         if (moveDir.x != 0 || moveDir.z != 0)
@@ -55,7 +56,6 @@ public class PlayerMove : MonoBehaviour
             rigid.MoveRotation(deltaRotation);
         }
     }
-
     private void Movement(Vector3 velocityChange)
     {
         rigid.AddForce(velocityChange, ForceMode.VelocityChange);

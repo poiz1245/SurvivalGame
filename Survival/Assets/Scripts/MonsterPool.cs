@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonsterPool : MonoBehaviour
 {
-    public static MonsterPool Instance;
+    //public static MonsterPool Instance;
 
     [SerializeField] GameObject[] monsterPrefabs;
 
@@ -12,14 +12,14 @@ public class MonsterPool : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        /*if (Instance == null)
         {
             Instance = this;
         }
         else
         {
             Destroy(gameObject);
-        }
+        }*/
 
         Initialize();
     }
@@ -34,11 +34,11 @@ public class MonsterPool : MonoBehaviour
         }
     }
 
-    public static GameObject GetMonster(int index)
+    public GameObject GetMonster(int index)
     {
         GameObject select = null;
 
-        foreach (GameObject obj in Instance.monsterPool[index])
+        foreach (GameObject obj in monsterPool[index])
         {
             if (!obj.activeSelf)
             {
@@ -50,8 +50,8 @@ public class MonsterPool : MonoBehaviour
 
         if (!select)
         {
-            select = Instantiate(Instance.monsterPrefabs[index], Instance.transform);
-            Instance.monsterPool[index].Add(select);
+            select = Instantiate(monsterPrefabs[index], transform);
+            monsterPool[index].Add(select);
         }
 
         return select;
