@@ -5,7 +5,7 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class TopView : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
 
     [SerializeField] float moveSpeed;
