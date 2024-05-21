@@ -26,19 +26,26 @@ public class GroundReposition : MonoBehaviour
         float verticalInput = Input.GetAxisRaw("Vertical");
 
         float playerXDir = horizontalInput;
-        float playerYDir = verticalInput;
+        float playerZDir = verticalInput;
 
-        if (diffX > diffZ)
+        if (Mathf.Abs(diffX - diffZ) <= 0.3f)
         {
+            print("X,Z축 모두 이동");
+            print($"X축 차이 : {diffX}  Z축 차이 : {diffZ}");
+            transform.Translate(playerXDir * groundMoveDis, 0, playerZDir * groundMoveDis);
+        }
+        else if (diffX > diffZ)
+        {
+            print("X축 이동");
+            print($"X축 차이 : {diffX}  Z축 차이 : {diffZ}  차이 : {diffX - diffX}");
             transform.Translate(Vector3.right * playerXDir * groundMoveDis);
         }
         else if (diffX < diffZ)
         {
-            transform.Translate(Vector3.forward * playerYDir * groundMoveDis);
+            print("Z축 이동");
+            print($"X축 차이 : {diffX}  Z축 차이 : {diffZ}  차이 : {diffX - diffX}");
+            transform.Translate(Vector3.forward * playerZDir * groundMoveDis);
         }
-        else if (Mathf.Abs(diffX - diffZ) <= 0.1f)
-        {
-            transform.Translate(playerYDir * groundMoveDis, 0, playerXDir * groundMoveDis);
-        }
+        
     }
 }
