@@ -30,20 +30,14 @@ public class GroundReposition : MonoBehaviour
 
         if (Mathf.Abs(diffX - diffZ) <= 0.3f)
         {
-            print("X,Z축 모두 이동");
-            print($"X축 차이 : {diffX}  Z축 차이 : {diffZ}");
             transform.Translate(playerXDir * groundMoveDis, 0, playerZDir * groundMoveDis);
         }
         else if (diffX > diffZ)
         {
-            print("X축 이동");
-            print($"X축 차이 : {diffX}  Z축 차이 : {diffZ}  차이 : {diffX - diffX}");
             transform.Translate(Vector3.right * playerXDir * groundMoveDis);
         }
         else if (diffX < diffZ)
         {
-            print("Z축 이동");
-            print($"X축 차이 : {diffX}  Z축 차이 : {diffZ}  차이 : {diffX - diffX}");
             transform.Translate(Vector3.forward * playerZDir * groundMoveDis);
         }
         
