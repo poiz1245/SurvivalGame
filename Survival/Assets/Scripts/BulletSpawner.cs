@@ -8,25 +8,27 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] Transform[] spawnPoints;
     [SerializeField] float spawnDelay;
 
-    void Start()
+    float spawnTime;
+    int count = 0;
+    bool findTarget;
+    private void FixedUpdate()
     {
-        StartCoroutine(MonsterSpawn(0, spawnDelay));
-    }
-    IEnumerator MonsterSpawn(int index, float spawnDelay)
-    {
-        int count = 0;
+        spawnTime -= Time.fixedDeltaTime;
+        findTarget = GameManager.Instance.player.findTarget;
 
-        while (true)
+        if (spawnTime <= 0 && findTarget)
         {
-            yield return new WaitForSeconds(spawnDelay);
-            GameObject bullet = GameManager.Instance.bulletPool.GetBullet(index);
-            bullet.transform.position = spawnPoints[count].position;
-            count++;
-
-            if (count == 2)
-            { 
-                count = 0;
-            }
+            MonsterSpawn(0);
+            spawnTime = spawnDelay;
         }
+    }
+
+    public void MonsterSpawn(int index)
+    {
+        if (count == 2) { count = 0; }
+
+        GameObject bullet = GameManager.Instance.bulletPool.GetBullet(index);
+        bullet.transform.position = spawnPoints[count].position;
+        count++;
     }
 }
