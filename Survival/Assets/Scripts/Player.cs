@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 public class Player : MonoBehaviour
 {
     public float damage { get; private set; }
+    public bool findTarget { get; private set; }
 
     [SerializeField] float moveSpeed;
 
@@ -17,11 +18,17 @@ public class Player : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
+    [Header("Scan")]
+    [SerializeField] float scanRadius;
+    [SerializeField] LayerMask targetLayer;
+    public Transform nearestTargetPos { get; private set; }
+
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
 
+        findTarget = false;
         damage = 50f;
     }
     void Update()
@@ -39,6 +46,7 @@ public class Player : MonoBehaviour
 
         Movement(velocityChange);
         Rotation(moveDir);
+        ScanTargets();
     }
     private void AnimSet()
     {
@@ -62,5 +70,34 @@ public class Player : MonoBehaviour
     private void Movement(Vector3 velocityChange)
     {
         rigid.AddForce(velocityChange, ForceMode.VelocityChange);
+    }
+    void ScanTargets()
+    {
+        Collider[] targets = Physics.OverlapSphere(transform.position, scanRadius, targetLayer);
+
+        if (targets.Length > 0)
+        {
+            float closestDistance = Mathf.Infinity;
+            Transform closestTarget = null;
+
+            foreach (Collider target in targets)
+            {
+                float distance = Vector3.Distance(transform.position, target.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestTarget = target.transform;
+                }
+            }
+
+            nearestTargetPos = closestTarget;
+            findTarget = true;
+
+        }
+        else
+        {
+            nearestTargetPos = null;
+            findTarget = false;
+        }
     }
 }
