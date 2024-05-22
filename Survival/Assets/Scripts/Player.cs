@@ -19,15 +19,17 @@ public class Player : MonoBehaviour
     float verticalInput;
 
     [Header("Scan")]
-    [SerializeField] float scanRadius;
     [SerializeField] LayerMask targetLayer;
+
     public Transform nearestTargetPos { get; private set; }
+    public float scanRadius { get; private set; }
 
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
 
+        scanRadius = 2f;
         findTarget = false;
         damage = 50f;
     }
@@ -46,7 +48,11 @@ public class Player : MonoBehaviour
 
         Movement(velocityChange);
         Rotation(moveDir);
-        ScanTargets();
+
+        if (!findTarget)
+        {
+            ScanTargets();
+        }
     }
     private void AnimSet()
     {
@@ -92,7 +98,6 @@ public class Player : MonoBehaviour
 
             nearestTargetPos = closestTarget;
             findTarget = true;
-
         }
         else
         {
