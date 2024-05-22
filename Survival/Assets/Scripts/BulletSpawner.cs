@@ -18,12 +18,12 @@ public class BulletSpawner : MonoBehaviour
 
         if (spawnTime <= 0 && findTarget)
         {
-            MonsterSpawn(0);
+            BulletSpawn(0);
             spawnTime = spawnDelay;
         }
     }
 
-    public void MonsterSpawn(int index)
+    public void BulletSpawn(int index)
     {
         if (count == 2) { count = 0; }
 
