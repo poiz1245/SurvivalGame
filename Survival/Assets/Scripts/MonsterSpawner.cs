@@ -24,7 +24,6 @@ public class MonsterSpawner : MonoBehaviour
             int rnd = Random.Range(0, spawnPoints.Length);
             GameObject monster = GameManager.Instance.monsterPool.GetMonster(index);
             monster.transform.position = spawnPoints[rnd].position;
-            print("º“»Ø");
         }
     }
 }
