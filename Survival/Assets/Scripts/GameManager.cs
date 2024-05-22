@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     public MonsterPool monsterPool;
     public BulletPool bulletPool;
+    public MonsterSpawner monsterSpawner;
+    public BulletSpawner bulletSpawner;
     public Player player;
     
 
