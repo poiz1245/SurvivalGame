@@ -16,7 +16,7 @@ public class BulletSpawner : MonoBehaviour
         spawnTime -= Time.fixedDeltaTime;
         findTarget = GameManager.Instance.player.findTarget;
 
-        if (spawnTime <= 0 && findTarget)
+        if (spawnTime <= 0 && findTarget) // ¸ó½ºÅÍ ³¢¸® °ãÃÄ¼­ Å¸°ÙÀÌ ¾È¸Â¾Æ¼­ ½ºÄµÀÌ ¾ÈµÊ
         {
             BulletSpawn(0);
             spawnTime = spawnDelay;
