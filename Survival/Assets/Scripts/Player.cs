@@ -7,20 +7,22 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
-    public float damage { get; private set; }
-    public bool findTarget { get; private set; }
+
 
     [SerializeField] float moveSpeed;
+    [SerializeField] LayerMask targetLayer;
 
     Rigidbody rigid;
     Animator anim;
 
     float horizontalInput;
     float verticalInput;
+    float hp;
 
-    [Header("Scan")]
-    [SerializeField] LayerMask targetLayer;
 
+    public float damage { get; private set; }
+    public bool findTarget { get; private set; }
+    public GameObject nearestTargetObject { get; private set; }
     public Transform nearestTargetPos { get; private set; }
     public float scanRadius { get; private set; }
 
@@ -29,7 +31,7 @@ public class Player : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
 
-        scanRadius = 2f;
+        scanRadius = 3f;
         findTarget = false;
         damage = 50f;
     }
@@ -49,10 +51,11 @@ public class Player : MonoBehaviour
         Movement(velocityChange);
         Rotation(moveDir);
 
-        if (!findTarget)
+        if (nearestTargetObject == null || !nearestTargetObject.activeSelf)
         {
             ScanTargets();
         }
+
     }
     private void AnimSet()
     {
@@ -85,6 +88,7 @@ public class Player : MonoBehaviour
         {
             float closestDistance = Mathf.Infinity;
             Transform closestTarget = null;
+            GameObject closestTargetObject = null;
 
             foreach (Collider target in targets)
             {
@@ -93,10 +97,12 @@ public class Player : MonoBehaviour
                 {
                     closestDistance = distance;
                     closestTarget = target.transform;
+                    closestTargetObject = target.gameObject;
                 }
             }
 
             nearestTargetPos = closestTarget;
+            nearestTargetObject = closestTargetObject;
             findTarget = true;
         }
         else
