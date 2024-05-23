@@ -6,7 +6,7 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
-    [SerializeField] float hp;
+    public float hp { get; private set; }
 
     float maxHp = 100;
     Rigidbody rigid;
