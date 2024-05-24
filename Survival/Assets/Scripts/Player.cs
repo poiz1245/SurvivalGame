@@ -7,8 +7,6 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
-
-
     [SerializeField] float moveSpeed;
     [SerializeField] LayerMask targetLayer;
 
@@ -17,8 +15,8 @@ public class Player : MonoBehaviour
 
     float horizontalInput;
     float verticalInput;
-    float hp;
 
+    public float hp;
 
     public float damage { get; private set; }
     public bool findTarget { get; private set; }
@@ -40,12 +38,17 @@ public class Player : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
         AnimSet();
+
+        if(hp <= 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
     private void FixedUpdate()
     {
         Vector3 moveDir = new Vector3(horizontalInput, rigid.velocity.y, verticalInput);
 
-        Vector3 targetVelocity = moveDir * moveSpeed;
+        Vector3 targetVelocity = moveDir.normalized * moveSpeed;
         Vector3 velocityChange = (targetVelocity - rigid.velocity);
 
         Movement(velocityChange);
@@ -110,5 +113,9 @@ public class Player : MonoBehaviour
             nearestTargetPos = null;
             findTarget = false;
         }
+    }
+    public void GetDamage(float damage)
+    {
+        hp -= damage;
     }
 }
